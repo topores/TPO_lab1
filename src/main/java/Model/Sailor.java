@@ -57,16 +57,17 @@ public class Sailor {
         byte[] array2 = new byte[c.getPower() * this.inspirationRate];
         new Random().nextBytes(array2);
         String text = new String(array2, Charset.forName("UTF-8"));
-        Article a = new Article(topic, text);
+        Article a = new Article(topic, text, this.inspirationRate/2);
         this.articles.add(a);
         this.inspirationRate += -4;
         System.out.println("Cтатья " + topic + " написана");
         return true;
     }
 
-    public void walk() {
+    public void walk(boolean withBathrobe) {
         System.out.println(this.name + " прогуливается");
         this.inspirationRate += 2;
+        if (withBathrobe) this.inspirationRate += 3;
     }
 
     public void sleep() {
